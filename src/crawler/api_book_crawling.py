@@ -59,6 +59,12 @@ time.sleep(0.5)
 
 while limit_api > 0:
     try:
+        if not list_isbn:
+            print()
+            print("모든 수집 대상에 대한 크롤링이 끝났습니다.")
+            print()
+            break
+
         # ISBN
         isbn13 = list_isbn.pop(0)
         # Parameter
@@ -82,7 +88,7 @@ while limit_api > 0:
 
         if dict_book:
             list_book_data.append(dict_book)
-        time.sleep(0.5)
+        # time.sleep(0.5)
 
     except requests.exceptions.RequestException as e:
         print("API 호출 실패:", e)
